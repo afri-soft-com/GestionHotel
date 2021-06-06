@@ -1,0 +1,129 @@
+﻿<Window x:Class="GestionHotel.MainWindowMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:GestionHotel"
+        mc:Ignorable="d"
+        Title="MainWindowMenu" Height="Auto" Width="Auto" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
+
+    <Window.Resources>
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="235"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="235"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Grid Background="White">
+        <Grid Height="60" VerticalAlignment="Top" Background="#a06700">
+            <TextBlock 
+                Text="Ishango Guesthouse"
+                Foreground="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="30"
+                FontWeight="Black"
+                />
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock Text="Mr Ushindi" Foreground="White" FontWeight="Bold" VerticalAlignment="Center" />
+                <materialDesign:PopupBox  Margin="5" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White">
+                    <StackPanel Width="150">
+                        <Button Content="Mon compte"/>
+                        <Button Content="Paramètres"/>
+                        <Button Content="Aide"/>
+                        <Button Content="Quitter"/>
+                        <Separator/>
+                        <Button Content="Deconnecter"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF745512">
+            <StackPanel>
+                <Grid Height="150" Background="White">
+                    <Button x:Name="btnCloseMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="btnCloseMenu_Click">
+                        <materialDesign:PackIcon Foreground="#a06700" Kind="ArrowLeft" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="btnOpenMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Click="btnOpenMenu_Click">
+                        <materialDesign:PackIcon Foreground="#a06700" Kind="Menu" Width="25" Height="25"/>
+                    </Button>
+                </Grid>
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="white">
+                    <ListViewItem Height="60" Name="chambre" PreviewMouseLeftButtonDown="chambre_PreviewMouseLeftButtonDown">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Room" Width="25" Height="25" Margin="10" VerticalAlignment="Center"></materialDesign:PackIcon>
+                            <TextBlock Margin="10 10" Text="Chambres" VerticalAlignment="Center" FontSize="17"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Name="AjouterClient" PreviewMouseLeftButtonUp="AjouterClient_PreviewMouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="PersonAdd" Width="25" Height="25" Margin="10" VerticalAlignment="Center"></materialDesign:PackIcon>
+                            <TextBlock Margin="10 10" Text="Ajouter un client" VerticalAlignment="Center" FontSize="17"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Name="ListeClient" PreviewMouseLeftButtonUp="ListeClient_PreviewMouseLeftButtonUp">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewList" Width="25" Height="25" Margin="10" VerticalAlignment="Center"></materialDesign:PackIcon>
+                            <TextBlock Margin="10 10" Text="Clients affectés" VerticalAlignment="Center" FontSize="17"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Name="Dashboard" PreviewMouseRightButtonUp="Dashboard_PreviewMouseRightButtonUp">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" Margin="10" VerticalAlignment="Center"></materialDesign:PackIcon>
+                            <TextBlock Margin="10 10" Text="Dashboard" VerticalAlignment="Center" FontSize="17"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+        <Grid HorizontalAlignment="Center" Width="Auto" Margin="0,60,0,0" VerticalAlignment="Center">
+            <StackPanel VerticalAlignment="Center">
+
+                <Frame x:Name="Main" Width="Auto">
+
+                </Frame>
+            </StackPanel>
+        </Grid>
+        <Grid HorizontalAlignment="Right" Width="250" Background="#a06700" Margin="0 60 0 0">
+            <Grid Margin="0 40 0 0">
+                <Image Source="/Images/logo.png" Width="200" Height="200" VerticalAlignment="Top" />
+            </Grid>
+            <Grid Margin="10 250 0 0">
+
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Réalisé par :" FontSize="20" Foreground="White" FontWeight="Bold"/>
+                    <Image Margin="0 20 0 0" Source="/Images/afri-logo.png"/>
+
+                    <StackPanel>
+                        <TextBlock Text="www.afri-soft.com / afrisoftinfo@gmail.com" Foreground="White" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="+243998954037" Foreground="White" HorizontalAlignment="Center" />
+                    </StackPanel>
+
+                    <StackPanel Margin="20 20 0 0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="-Ir Steve Amboko" Foreground="Wheat" Margin="5"/>
+                        <TextBlock Text="-Ir Steve Amboko" Foreground="Wheat" Margin="5"/>
+                        <TextBlock Text="-Ir Steve Amboko" Foreground="Wheat" Margin="5"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,96 @@
+﻿<Window x:Class="GestionHotel.Windows.Clients.WindowClientsAffectes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:GestionHotel.Windows.Clients"
+        mc:Ignorable="d"
+        Title="WindowClientsAffectes" Height="600" Width="1200" WindowStartupLocation="CenterScreen" WindowStyle="None">
+
+    <Grid  Background="#FF745512" Width="Auto" Height="Auto" >
+        <Grid Height="50" VerticalAlignment="Top"  Background="#FF745512">
+            <TextBlock Foreground="#ffffff" Text="Clients affectés" Margin="10" FontSize="27" FontWeight="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="fermerWindowclientaffectes" Background="{x:Null}" BorderBrush="{x:Null}"
+                        VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}"
+                        Click="fermerWindowclientaffectes_Click">
+                    <materialDesign:PackIcon Kind="Close" Foreground="White" Width="25" Height="25"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Background="White" Margin="20 50 20 30">
+            <StackPanel Orientation="Vertical">
+                <Grid Height="45">
+                    <materialDesign:ColorZone Mode="PrimaryMid" Padding="5" Background="#FF745512">
+                        <DockPanel>
+                            <StackPanel Orientation="Horizontal" materialDesign:RippleAssist.IsCentered="True" 
+                                                HorizontalAlignment="Right" >
+                                <materialDesign:ColorZone Mode="Standard" Padding="10 4 8 4" CornerRadius="15" 
+                                                                  Panel.ZIndex="1" Margin="16 0 0 0" 
+                                                                  materialDesign:ShadowAssist.ShadowDepth="Depth1" Width="246">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Button Style="{DynamicResource MaterialDesignToolButton}">
+                                            <materialDesign:PackIcon Kind="Magnify" Opacity=".56" />
+                                        </Button>
+
+                                        <TextBox Grid.Column="1" Margin="8 0 0 0" materialDesign:HintAssist.Hint="Recherche" 
+                                                         materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0"
+                                                         VerticalAlignment="Center" x:Name="recherche_client_txt" />
+                                        <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="2">
+                                            <materialDesign:PackIcon Kind="Microphone" Opacity=".56" Margin="8 0 0 0" />
+                                        </Button>
+                                    </Grid>
+                                </materialDesign:ColorZone>
+                            </StackPanel>
+                        </DockPanel>
+                    </materialDesign:ColorZone>
+                </Grid>
+
+                <ListView Name="listeview_clients_affectes" ItemsSource="{Binding Items1}" Height="380" >
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding CodeClient}" Header="CODE CLIENT" />
+                            <GridViewColumn DisplayMemberBinding="{Binding CodeChambre}" Header="CODE CHAMBRE" />
+                            <GridViewColumn DisplayMemberBinding="{Binding NumAffectation}" Header="NUM AFFECTATION" />
+                            <GridViewColumn DisplayMemberBinding="{Binding DateAffectation}" Header="DATE AFFECTATION" />
+                            <GridViewColumn DisplayMemberBinding="{Binding TarifChambre}" Header="TARIF CHAMBRE" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Grid Height="70">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,10,10,0" 
+                                        DockPanel.Dock="Left">
+                        <Button Style="{StaticResource RoundButtonTemplate}" Background="#FF745512" Margin="2" 
+                                        Foreground="White" 
+                                        Width="155" Height="40" x:Name="details_btn">
+                            Modifier
+                        </Button>
+                        <Button Style="{StaticResource RoundButtonTemplate}" x:Name="payement_btn" Margin="2" 
+                                        Background="#FF745512" 
+                                        Foreground="White" Width="150"  Height="40" >
+                            Supprimer
+                        </Button>
+                        <Button Style="{StaticResource RoundButtonTemplate}" Margin="2" Background="#FF745512" Foreground="White" Width="150"  Height="40">
+                            Affecter
+                        </Button>
+                    </StackPanel>
+
+                </Grid>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

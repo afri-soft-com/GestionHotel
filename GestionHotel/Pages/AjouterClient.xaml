@@ -1,0 +1,94 @@
+﻿<Page x:Class="GestionHotel.Pages.AjouterClient"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:GestionHotel.Pages"
+      mc:Ignorable="d" 
+      Title="Home" Background="#ffffff" Width="Auto" Height="Auto">    
+
+    <Grid Background="#eee" Width="Auto" Height="Auto">
+        <Grid Height="50" VerticalAlignment="Top">
+            <TextBlock Foreground="#a06700" Text="Nouveau client" Margin="10" FontSize="27" FontWeight="Black" VerticalAlignment="Center"/>
+        </Grid>
+        <Grid Margin="20 50 20 30" Background="#ffffff" >
+
+            <StackPanel Orientation="Horizontal">
+                <Grid Width="300" Margin="20">
+                    <StackPanel VerticalAlignment="Center">
+                        <Image  Source="/Images/client_icon_or.png" Stretch="Fill" VerticalAlignment="Center" Margin="10"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Width="420">
+                    <StackPanel Orientation="Vertical" Margin="20" VerticalAlignment="Center">
+                        <TextBox 
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            HorizontalAlignment="Stretch" 
+                            AcceptsReturn="True"
+                            TextWrapping="Wrap"
+                            VerticalScrollBarVisibility="Auto"                            
+                            materialDesign:HintAssist.Hint="Nom client"
+                            Margin="10,10,10,10"
+                            Width="300"
+                            x:Name="NomClient_txt"/>
+                        <TextBox 
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            HorizontalAlignment="Stretch" 
+                            AcceptsReturn="True"
+                            TextWrapping="Wrap"
+                            VerticalScrollBarVisibility="Auto"                            
+                            materialDesign:HintAssist.Hint="Postnom client"
+                            Margin="10,10,10,10"
+                            Width="300"
+                            x:Name="PostnomClient_txt"/>
+                        <TextBox 
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            HorizontalAlignment="Stretch" 
+                            AcceptsReturn="True"
+                            TextWrapping="Wrap"
+                            VerticalScrollBarVisibility="Auto"                            
+                            materialDesign:HintAssist.Hint="Prenom client"
+                            Margin="10,10,10,10"
+                            Width="300"
+                            x:Name="PrenomClient_txt"/>
+                        <TextBox 
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            HorizontalAlignment="Stretch" 
+                            AcceptsReturn="True"
+                            TextWrapping="Wrap"
+                            VerticalScrollBarVisibility="Auto"                            
+                            materialDesign:HintAssist.Hint="Telephone client"
+                            Margin="10,10,10,10"
+                            Width="300"
+                            x:Name="TelephoneClient_txt"/>
+                        <TextBox 
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            HorizontalAlignment="Stretch" 
+                            AcceptsReturn="True"
+                            TextWrapping="Wrap"
+                            VerticalScrollBarVisibility="Auto"                            
+                            materialDesign:HintAssist.Hint="Email client"
+                            Margin="10,10,10,10"
+                            Width="300"
+                            x:Name="EmailClient_txt"/>
+                        <Button 
+                            Style="{StaticResource RoundButtonTemplate}"
+                            Background="#a06700"
+                            Margin="10"
+                            Foreground="White"
+                            Width="300"
+                            Height="50"
+                            Content="Enregistrer"
+                            FontSize="20"
+                            FontWeight="Black"
+                            x:Name="enregistrer_client"
+                            Click="enregistrer_client_Click">
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

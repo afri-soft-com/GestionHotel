@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\addRoomLogo.png" />
+    <None Remove="Images\afri-logo.png" />
+    <None Remove="Images\client_icon_or.png" />
+    <None Remove="Images\logo.png" />
+    <None Remove="Images\logo_guesthouse.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dragablz" Version="0.0.3.223" />
+    <PackageReference Include="MaterialDesignColors" Version="2.0.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.1.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibraryGestionHotel\ClassLibraryGestionHotel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\addRoomLogo.png" />
+    <Resource Include="Images\afri-logo.png" />
+    <Resource Include="Images\client_icon_or.png" />
+    <Resource Include="Images\logo.png" />
+    <Resource Include="Images\logo_guesthouse.png" />
+  </ItemGroup>
+
+</Project>
